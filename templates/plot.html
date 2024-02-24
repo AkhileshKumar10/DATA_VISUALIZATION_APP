@@ -1,0 +1,42 @@
+<!-- plot.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization Plot</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <h2>Plot</h2>
+
+    {% if chart_type == 'scatter' %}
+        <div id="scatter-container"></div>
+        <script>
+            var scatterData = {{ chart_json | safe }};
+            Plotly.newPlot('scatter-container', scatterData);
+        </script>
+    {% elif chart_type == 'bar' %}
+        <div id="bar-container"></div>
+        <script>
+            var barData = {{ chart_json | safe }};
+            Plotly.newPlot('bar-container', barData);
+        </script>
+    {% elif chart_type == 'line' %}
+        <div id="line-container"></div>
+        <script>
+            var lineData = {{ chart_json | safe }};
+            Plotly.newPlot('line-container', lineData);
+        </script>
+    {% elif chart_type == 'pie' %}
+        <div id="pie-container"></div>
+        <script>
+            var pieData = {{ chart_json | safe }};
+            Plotly.newPlot('pie-container', pieData);
+        </script>
+    {% endif %}
+    <p>No chart data available.</p>
+</body>
+</html>
