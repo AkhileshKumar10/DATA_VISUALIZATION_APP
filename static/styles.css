@@ -1,0 +1,30 @@
+/* static/styles.css */
+
+body {
+    color: #ffffff; /* Text color */
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    padding: 20px;
+    background-color: #34495e; /* Box background color */
+    border: 10px solid #2980b9; /* Border color and width */
+    border-radius: 15px; /* Border radius for rounded corners */
+    text-align: center;
+}
+
+/* Additional styling for form elements */
+form {
+    margin-top: 20px;
+}
+
+label, select, button {
+    margin-bottom: 10px;
+}
