@@ -1,0 +1,47 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // Function to change background color
+        function changeBackgroundColor() {
+            var colors = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99']; // Add more colors as needed
+            var randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        // Change background color on page load
+        window.onload = function () {
+            changeBackgroundColor();
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Data Dashboard</h2>
+        <form action="/plot" method="post">
+            <label for="columns">Select columns:</label>
+            <select name="columns" id="columns" multiple required>
+                {% for column in data_columns %}
+                    <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <label for="chart_type">Select chart type:</label>
+            <select name="chart_type" id="chart_type" required>
+                <option value="scatter">Scatter Plot</option>
+                <option value="bar">Bar Chart</option>
+                <option value="line">Line Chart</option>
+                <option value="pie">Pie Chart</option>
+            </select>
+            <br>
+            <button type="submit">Plot</button>
+        </form>
+    </div>
+</body>
+</html>
