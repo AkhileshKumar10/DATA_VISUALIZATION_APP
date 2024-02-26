@@ -40,22 +40,30 @@ def plot():
         return "No data available. Please upload a CSV file."
 
     selected_columns = request.form.getlist('columns')
-    chart_type = request.form['chart_type']
+    chart_type = request.form.get('chart_type')
+
+    if chart_type not in ['scatter', 'bar', 'line', 'pie']:
+        return "Invalid chart type."
 
     if len(selected_columns) < 2:
-        return "Please select at least two columns to plot."
+        return "Please select at least two columns."
 
     try:
         if chart_type == 'scatter':
             fig = px.scatter(data, x=selected_columns[0], y=selected_columns[1], title=chart_type)
         elif chart_type == 'bar':
             fig = px.bar(data, x=selected_columns[0], y=selected_columns[1], title=chart_type)
+        elif chart_type == 'line':
+            fig = px.line(data, x=selected_columns[0], y=selected_columns[1], title=chart_type)
+        elif chart_type == 'pie':
+            fig = px.pie(data, names=selected_columns[0], values=selected_columns[1], title=chart_type)
         else:
             return "Invalid chart type."
-    except KeyError as e:
-        return f"Error: {str(e)}. Please check selected columns and try again."
 
-    return render_template('plot.html', plot=fig.to_html(full_html=False))
+        chart_json = fig.to_json()
+        return render_template('plot.html', chart_json=chart_json, chart_type=chart_type)
+    except Exception as e:
+        return f"Error: {str(e)}. Please check selected columns and try again."
 
 if __name__ == '__main__':
     app.run(debug=True)
