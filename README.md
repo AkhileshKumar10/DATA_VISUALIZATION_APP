@@ -53,3 +53,14 @@ Flask
 Pandas
 Plotly
 Matplotlib
+screenshots
+![image](https://github.com/Akhilesh-kumar-10/DATA_VISUALIZATION_APP/assets/86221348/ee77cb1b-8754-478d-8f70-873a53770d62)
+the above is the dashboard
+![image](https://github.com/Akhilesh-kumar-10/DATA_VISUALIZATION_APP/assets/86221348/7dea2a6f-a0fd-4acc-b207-37c2d7566bfe)
+the data dashboard
+![image](https://github.com/Akhilesh-kumar-10/DATA_VISUALIZATION_APP/assets/86221348/bdd64edc-8bb9-49c9-91a8-37e9fe5b91b0)
+data visualization
+
+
+
+
